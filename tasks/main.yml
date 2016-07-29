@@ -1,0 +1,18 @@
+---
+# tasks file for jekyll
+- name: check that ruby is installed
+  apt: name="{{item}}"
+  with_items:
+    - ruby
+    - ruby-dev
+    - make
+    - gcc
+    - nodejs
+    - libxml2
+    - libxml2-dev
+
+- name: Install Gems for jekyll / github
+  gem: name={{item}} state=present user_install=False
+  with_items:
+    - jekyll
+    - bundler
